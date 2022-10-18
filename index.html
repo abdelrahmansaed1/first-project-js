@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form action="">
+            <input type="text" name="text" id="insert-input" placeholder="Enter the name">
+            <button id="insert-btn">Insert</button>
+            <button id="delete-btn">Delete</button>
+            <p id="text"></p>
+            <input type="text" name="text" id="replace-input" placeholder="Enter the name">
+            <input type="text" name="text" id="replacer-input" placeholder="Enter the replacer name">
+            <button id="replace-btn">Replace</button>
+            <p id="replace-text"></p>
+        </form>
+    </div>
+</body>
+<script>
+    var arr =[]
+    document.getElementById("insert-btn").addEventListener("click",function(e){
+        e.preventDefault()
+        var arr1 = document.getElementById("insert-input").value
+        arr.push(arr1)
+        document.getElementById("text").innerHTML = arr
+        document.getElementById("insert-input").value=""
+    })
+    document.getElementById("delete-btn").addEventListener("click",function(e){
+        e.preventDefault()
+        arr.pop()
+        document.getElementById("text").innerHTML = arr
+
+    })
+    document.getElementById("replace-btn").addEventListener("click",function(e){
+        e.preventDefault()
+        var replaceName = document.getElementById("replace-input").value
+        var indexReplace = arr.indexOf(replaceName)
+        if(arr.includes(replaceName)){
+            arr.splice(indexReplace,1,document.getElementById("replacer-input").value)
+            document.getElementById("replace-text").innerHTML = arr
+        }
+        else{
+            document.getElementById("replace-text").innerHTML = "Error"
+
+        }
+    })
+</script>
+</html>
